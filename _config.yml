@@ -1,26 +1,33 @@
 # Header
 menu:
   首页: /
+  分类: /categories
   友链: /links
   关于: /about
 
-# 主页banner图
-banner: https://qiniu.sukoshi.xyz/src/images/68686407_p0.jpg
+#cdn加速
+#cdn: https://raw.gitmirror.com/waterkin0/images/main/
+# cdn: https://waterkin0.coding.net/public/images/blogimages/git/files/main/
+cdn: https://cdn.waterkin.top/https://github.com/waterkin0/images/blob/main/
+#cdn: https://jsd.cdn.zzko.cn/gh/waterkin0/images@main/
 
-# 站点通知信息
-notice: flex-block主题部分重构，详情查看https://github.com/miiiku/flex-block
+# 主页背景图
+background_day:  blog_base/day.jpg
+background_night: blog_base/night.jpg
+banner: blog_base/主页.jpg
+notice: 想换个主题了，可能最近会出现显示错误啥的，还请谅解
 
 # 作者信息
 author:
-  name: Sukoshi
-  avatar: https://s.gravatar.com/avatar/2d6b803eea37de0257620d5fabee7e64?s=200&r=g&d=retro
-  description: 贵在坚持
+  name: 水帝
+  avatar: /touma2.jpg
+  description: 啥也不是
 
 toc:
-  max_depth: 3 # 生成 TOC 的最大深度
-  min_depth: 2 # 生成 TOC 的最小深度
+  max_depth: 5 # 生成 TOC 的最大深度
+  min_depth: 1 # 生成 TOC 的最小深度
 
-comments:
+comments: #评论 暂时没开
   enable: false
   use: 'valine' # valine || disqus
   # valine 评论
@@ -68,19 +75,19 @@ google_analytics:
 # gauges分析
 gauges_analytics: 
 # 百度分析
-baidu_analytics: 
+baidu_analytics: https://hm.baidu.com/hm.js?faa79fd1473d6ada0916813f7e10d6e9
 # 腾讯分析
 tencent_analytics: 
 # 站点ico
 favicon: /favicon.ico
 
 
-# Social Icon
+# Social Icon 其他链接 可自定义 没开
 social_icon:
   enable: true
   icons:
     ins     :
     zhihu   :
     weibo   : 
-    github  : https://github.com/miiiku/
-    twitter : https://twitter.com/guanquanhong
+    github  : https://github.com/waterkin0/
+    twitter : 

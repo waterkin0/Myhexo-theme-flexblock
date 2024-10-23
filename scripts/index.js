@@ -41,7 +41,7 @@ hexo.extend.tag.register("image", function(args) {
 
   return `
     <figure class="figure-image">
-      <img src="${datas.url}" alt="${datas.title}" loading="lazy" />
+      <img src="${datas.url}" alt="${datas.title}" loading="lazy" onload="loadImage()"/>
       <figcaption>${datas.title}</figcaption>
     </figure>
   `;

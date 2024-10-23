@@ -4,7 +4,8 @@
 
 // 解决ios下overflow: hidden后仍然能滚动的问题，隐藏滚动条
 ::-webkit-scrollbar {
-  display: none;
+  //display: none;
+  width:0px;
 }
 
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a,
@@ -147,9 +148,10 @@ i, em, dfn {
   }
 }
 
-.root-container {
-  background-color: var(--theme-bg-primary)
-}
+//root的style
+//.root-container {
+//  background-color: var(--theme-bg-primary)
+//}
 
 .body-container {
   position: relative
@@ -168,6 +170,7 @@ i, em, dfn {
   bottom: 40px
   padding: 12px
   transform: translate3d(0, 100%, 0)
+  backdrop-filter: blur(3px);//模糊
 
   &:hover .icon-back-to-top {
     fill: var(--theme-text-stress)
@@ -229,3 +232,5 @@ i, em, dfn {
 @import "_partial/pagination"
 @import "_partial/content"
 @import "_partial/page"
+@import "_partial/root"
+@import "_partial/loading"

@@ -1,7 +1,7 @@
 <div class="article-nav-item layout-padding">
   <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
     <% if (page.cover) { %>
-      <div class="card-cover" background-image-lazy data-img="<%= page.cover %>"></div>
+      <div class="card-cover" background-image-lazy data-img="<%= theme.cdn + page.cover %>"></div>
     <% } %>
     <div class="card-text">
       <% if (page.link) { %>

@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?5b456f31ba675bfffb7993b408d4f0ce";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>    
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="theme-color" content="#3367D6"/>
-  <link rel="apple-touch-icon" href="/icons-192.png">
-  <link rel="manifest" href="/manifest.json">
+  <!-- <link rel="apple-touch-icon" href="/icons-192.png"> -->
+  <!-- <link rel="manifest" href="/manifest.json"> -->
   
   <%- meta_generator() %>
 
@@ -49,13 +58,16 @@
   <% } %>
 
   <% if (config.highlight.enable){ %>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@1.1.3/index.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlightjs@9.16.2/styles/<%= config.highlight.theme || 'monokai' %>.css">
+    <!-- <link rel="stylesheet" href="https://raw.iqiq.io/npm/typeface-source-code-pro@1.1.3/index.min.css">
+    <link rel="stylesheet" href="https://raw.iqiq.io/npm/highlightjs@9.16.2/styles/<%= config.highlight.theme || 'monokai' %>.css"> -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/<%= config.highlight.theme || 'monokai' %>.min.css">
+    <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script> -->
   <% } %>
 
   <%- css('css/style') %>
 </head>
 <body>
+  <%- partial('_partial/loading') %>
   <div class="root-container">
     <%- partial('_partial/header') %>
 

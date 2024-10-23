@@ -3,10 +3,12 @@
 <div class="body-container">
   <article class="content-container layout-block post-container">
     <div class="article-info">
-      <%# 输出Markdown内容 %>
-      <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
-        <%- page.content %>
-      </section>
+      <% if (page.layout != "categories") { %>
+        <%# 输出Markdown内容 %>
+        <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
+          <%- page.content %>
+        </section>
+      <% } %>
 
       <%# 输出自定义友链内容 %>
       <% if (page.layout === "links") { %>
@@ -15,7 +17,7 @@
             <div class="link-item layout-padding">
               <a href="<%= link.link %>" title="<%= link.name %>" class="content-padding--primary soft-size--primary soft-style--box" target="_blank" rel="noopener noreferrer">
                 <% if (link.cover) { %>
-                <img src="<%= link.cover %>" alt="<%= link.name %>" class="soft-size--round soft-style--box">
+                <img src="<%= theme.cdn + link.cover %>" alt="<%= link.name %>" class="soft-size--round soft-style--box">
                 <% } %>
                 <div>
                   <h4 class="text-ellipsis"><%= link.name %></h4>
@@ -29,6 +31,32 @@
         </section>
       <% } %>
 
+      <%# 输出自定义分类内容 %>
+      <% if (page.layout === "categories") { %>
+        <div class="content-container layout-block article-list">
+          <% site.categories.each(function(categorie) { %>
+            <div class="article-item layout-padding">
+              <% site.data.categories.forEach(function(categorie_name) { %>
+                <% if (categorie.name == categorie_name.name) { %>
+                  <article class="card-container article-card content-padding--large soft-size--large soft-style--box">
+                    <% if (categorie_name.cover) { %>
+                      <div class="card-cover" background-image-lazy style="<%= `background-image: url(${theme.cdn + categorie_name.cover})` %>"></div>
+                    <% } %>
+                    <div class="card-text">
+                      <a href="<%= url_for('/categories/'+categorie.name) %>" itemprop="url">
+                        <h2 class="card-text--title"><%= categorie.name %></h2>
+                        <!-- <h3><%= categorie_name.describe %></h3>  -->
+                        <h3>共<%= categorie.length %>篇文章</h3>
+                      </a>
+                    </div>
+                  </article>
+                <% } %>
+              <% }) %>
+            </div>
+          <% }) %>
+        </div>
+      <% } %>
+
       <%# 输出自定义留言板内容 %>
       <% if (page.layout === "messages") { %>
         <section class="page-message-container layout-padding">
@@ -40,10 +68,11 @@
       <%- partial("../_widget/widget-author") %>
 
       <%- partial("../_widget/widget-notice") %>
+      <% if (page.layout === "links"||page.layout === "messages") { %>
+          <%- partial("../_widget/widget-categorys") %>
 
-      <%- partial("../_widget/widget-categorys") %>
-
-      <%- partial("../_widget/widget-tags") %>
+          <%- partial("../_widget/widget-tags") %>
+      <% } %>
     </div>
   </article>
 </div>

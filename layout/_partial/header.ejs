@@ -1,8 +1,23 @@
 
 <!-- header container -->
 <header class="header-container<%= is_post() ? ' post' : '' %>">
-  <% if (page.cover || theme.banner) { %>
-    <div class="post-image" style="<%= `background-image: url(${page.cover || theme.banner})` %>"></div>
+  <% if ((!is_category()) && (page.cover || theme.banner)) { %>
+    <div class="post-image" style="<%= `background-image: url(${theme.cdn + (page.cover || theme.banner)})` %>"></div>
+  <% } %>
+  <% if (is_category()) { %>
+    <%
+      var length = 0;
+      site.categories.each(function (categorie) {
+        if (categorie.name === page.category) length = categorie.length
+      });
+    %>
+    <% site.data.categories.forEach(function(categorie_name) { %>
+      <% if (categorie_name.name == page.category) { %>
+        <% if (categorie_name.cover) { %>
+          <div class="post-image" style="<%= `background-image: url(${theme.cdn + (categorie_name.cover || theme.banner)})` %>"></div>
+        <% } %>
+      <% } %>
+    <% }) %>
   <% } %>
 
   <%- partial('_partial/nav', null, {cache: !config.relative_link}) %>
@@ -13,7 +28,18 @@
       <div class="post-text layout-block layout-padding">
         <h1 class="title-wrap"><%= config.title %></h1>
         <% if (config.subtitle) { %>
-          <h2 class="title-sub-wrap"><%= config.subtitle %></h2>
+          <span id="typed"></span>
+          <script src="https://unpkg.com/typed.js@2.0.14/dist/typed.umd.js"></script>
+          <script>
+            var typed = new Typed("#typed", {
+            strings: ["凡为人者,皆是星辰","Every man and every woman is a star","人としてのすべては星である"],
+            startDelay: 200,
+            backDelay: 2000,
+            typeSpeed: 100,
+            loop: true,
+            backSpeed: 20
+            })
+          </script>
         <% } %>
       </div>
     </div>
@@ -31,12 +57,6 @@
 
   <%# category banner %>
   <% if (is_category()) { %>
-    <%
-      var length = 0;
-      site.categories.each(function (categorie) {
-        if (categorie.name === page.category) length = categorie.length
-      });
-    %>
     <div class="header-content">
       <div class="post-text layout-block layout-padding">
         <h1 class="title-wrap"><%= page.category %></h1>
@@ -71,6 +91,12 @@
             <strong><%= page.author || config.author %></strong>
             <span>发布于</span>
             <%- partial("../_widget/date", { class_name: 'article-date', post: page, date_format: null }) %>
+          </h2>
+          <h2>
+              <span class="post-count">📖<%= wordcount(page.content) %>字</span>
+              <span class="post-count">⏱<%= min2read(page.content) %>分</span>
+            <!-- <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
+              👀<span id="busuanzi_value_page_pv"></span>次
           </h2>
           <%- partial("../_widget/category", { page: page, class_name: 'dark' }) %>
           <%- partial("../_widget/tag", { page: page, class_name: 'dark' }) %>

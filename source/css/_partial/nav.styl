@@ -21,14 +21,22 @@ html.show-mobile-nav {
 }
 
 .navbar {
-  position: relative
-  z-index: 2
+  position: fixed
+  z-index: 2//堆叠顺序
+  width: 100% //fixed 和下面不冲突
+  transition: all 0.5s ease-out
+  &.show {
+    backdrop-filter: blur(3px) brightness(50%);
+    background-color: rgba(0, 0, 0, 0);
+    transform: translate3d(0, 0, 0)//图片渲染的时候触发gpu加速
+    transition: all 0.5s ease-out
+  }
 }
     
 .navbar-content {
-  display: flex
-  align-items: center
-  justify-content: space-between
+  display: flex                      //弹性盒
+  align-items: center                //上下方向上的位置，center为中
+  justify-content: space-between     //等距排列
   max-width: var(--layout-max-width)
   width: 100%
   height: 100%
