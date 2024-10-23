@@ -20,12 +20,18 @@
             <% } %>
             <div class="card-text--row">
               <span>发布于</span>
-              <%- partial("../_widget/date", { class_name: null, post: post, date_format: null }) %>
+              <%- partial("../_widget/date", { class_name: 'article-date', post: post, date_format: null }) %>
             </div>
             <div style="margin-right: 10px;">
                   <span class="post-count">📖<%= wordcount(post.content) %>字</span>
                   <span class="post-count">⏱<%= min2read(post.content) %>分</span>
             </div>
+            <% if ( date(post.updated, null) != date(post.date, null) ) { %>
+              <div class="last-time">
+                <span>更新于</span>
+                <%- partial("../_widget/updated", { class_name: 'article-updated', post: post, date_format: null }) %>
+              </div>
+            <% } %>
             <%- partial("../_widget/category", { page: post, class_name: post.cover ? 'dark' : 'light' }) %>
             <%- partial("../_widget/tag", { page: post, class_name: post.cover ? 'dark' : 'light' }) %>
           </div>

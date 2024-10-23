@@ -21,8 +21,8 @@
                 <% } %>
                 <div>
                   <h4 class="text-ellipsis"><%= link.name %></h4>
-                  <% if (link.describe) { %>
-                  <p class="text-ellipsis"><%= link.describe %></p>
+                  <% if (link.description) { %>
+                  <p class="text-ellipsis"><%= link.description %></p>
                   <% } %>
                 </div>
               </a>
@@ -71,8 +71,14 @@
       <% if (page.layout === "links"||page.layout === "messages") { %>
           <%- partial("../_widget/widget-categorys") %>
 
+<<<<<<< HEAD
           <%- partial("../_widget/widget-tags") %>
       <% } %>
+=======
+      <%- partial("../_widget/widget-categories") %>
+
+      <%- partial("../_widget/widget-tags") %>
+>>>>>>> master
     </div>
   </article>
 </div>
