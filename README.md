@@ -7,6 +7,10 @@
 
 一个卡片类拟态风格的Hexo主题
 
+fork自![hexo-theme-flexblock](https://github.com/miiiku/hexo-theme-flexblock),非常感谢，这个主题很好看
+
+自己修改了一些东西，包括开屏动画，目录跳转等，bug还很多
+
 ![flex-block--home](./screenshots/flex-block--home.jpeg)
 
 ![flex-block--post](./screenshots/flex-block--post.jpeg)
