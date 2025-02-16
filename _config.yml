@@ -9,7 +9,8 @@ menu:
 #cdn加速
 #cdn: https://raw.gitmirror.com/waterkin0/images/main/
 # cdn: https://waterkin0.coding.net/public/images/blogimages/git/files/main/
-cdn: https://cdn.waterkin.top/https://github.com/waterkin0/images/blob/main/
+# cdn: https://cdn.waterkin.top/https://github.com/waterkin0/images/blob/main/
+cdn: https://waterkinimage-1312676136.cos.ap-chengdu.myqcloud.com/githubimages/
 #cdn: https://jsd.cdn.zzko.cn/gh/waterkin0/images@main/
 
 # 主页背景图
